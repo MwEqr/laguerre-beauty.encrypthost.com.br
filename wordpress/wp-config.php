@@ -91,6 +91,18 @@ define( 'WP_DEBUG', false );
 
 
 
+// Force HTTPS on reverse proxies
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
+if (isset($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on') {
+    $_SERVER['HTTPS'] = 'on';
+}
+$_SERVER['HTTPS'] = 'on'; // Forçar globalmente
+
+define('WP_HOME', 'https://laguerre-beauty.encrypthost.com.br/wordpress');
+define('WP_SITEURL', 'https://laguerre-beauty.encrypthost.com.br/wordpress');
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
